@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AstroFinish - Astro Photo Editing for iPhone</title>
+  <meta name="description" content="AstroFinish is a local-first astro photo editor for iPhone with no account, no cloud upload, and no tracking.">
+  <link rel="icon" type="image/png" href="landing-assets/app-icon.png">
+  <link rel="apple-touch-icon" href="landing-assets/app-icon.png">
+  <meta property="og:title" content="AstroFinish - Astro Photo Editing for iPhone">
+  <meta property="og:description" content="Edit telescope captures and FITS sessions locally on iPhone with no account, no cloud upload, and no tracking.">
+  <meta property="og:image" content="landing-assets/app-icon.png">
+  <style>
+    :root {
+      --obsidian: #020408;
+      --midnight: #07111d;
+      --graphite: #111820;
+      --slate: #26313b;
+      --moonlight: #f3f6f8;
+      --mist: #aab6c4;
+      --metal: #707a84;
+      --ice: #8fd8ea;
+      --amber: #ddaa59;
+      --line: rgba(243, 246, 248, 0.12);
+      --line-strong: rgba(143, 216, 234, 0.34);
+      --glass: rgba(17, 24, 32, 0.74);
+      --glass-dark: rgba(2, 4, 8, 0.76);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--moonlight);
+      background:
+        radial-gradient(circle at 16% 8%, rgba(143, 216, 234, 0.12), transparent 28rem),
+        radial-gradient(circle at 84% 14%, rgba(221, 170, 89, 0.08), transparent 26rem),
+        linear-gradient(135deg, var(--obsidian), var(--midnight) 48%, #000);
+      font-family: ui-rounded, "SF Pro Rounded", "Avenir Next Rounded", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      content: "";
+      background-image:
+        radial-gradient(circle, rgba(243, 246, 248, 0.72) 0 1px, transparent 1.7px),
+        radial-gradient(circle, rgba(143, 216, 234, 0.45) 0 1px, transparent 1.6px);
+      background-position: 0 0, 38px 64px;
+      background-size: 137px 173px, 211px 197px;
+      opacity: 0.28;
+    }
+
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      content: "";
+      background:
+        linear-gradient(115deg, transparent 0 32%, rgba(143, 216, 234, 0.045) 33%, transparent 34% 100%),
+        linear-gradient(296deg, transparent 0 64%, rgba(221, 170, 89, 0.035) 65%, transparent 66% 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(100% - 40px, 1180px);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(243, 246, 248, 0.08);
+      background: rgba(2, 4, 8, 0.68);
+      backdrop-filter: blur(22px);
+    }
+
+    .nav {
+      display: flex;
+      min-height: 74px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(243, 246, 248, 0.16);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(243, 246, 248, 0.08);
+      box-shadow: 0 12px 32px rgba(143, 216, 234, 0.12);
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a,
+    .button {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(243, 246, 248, 0.13);
+      border-radius: 999px;
+      padding: 0 16px;
+      background: rgba(243, 246, 248, 0.035);
+      color: rgba(243, 246, 248, 0.84);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      transition: transform 220ms var(--ease), border-color 220ms var(--ease), background 220ms var(--ease);
+    }
+
+    .nav-links a:hover,
+    .button:hover {
+      border-color: rgba(143, 216, 234, 0.45);
+      background: rgba(143, 216, 234, 0.12);
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      color: var(--obsidian);
+      background: linear-gradient(135deg, var(--moonlight), #dcecf3 52%, var(--ice));
+      border-color: rgba(243, 246, 248, 0.65);
+      box-shadow: 0 18px 36px rgba(143, 216, 234, 0.18);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(460px, 1.1fr);
+      gap: 42px;
+      align-items: center;
+      min-height: calc(100vh - 74px);
+      padding: 72px 0 92px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: max-content;
+      max-width: 100%;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 18px;
+      border: 1px solid rgba(143, 216, 234, 0.24);
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: rgba(143, 216, 234, 0.07);
+      color: rgba(143, 216, 234, 0.96);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ice);
+      box-shadow: 0 0 18px var(--ice);
+      content: "";
+      flex: 0 0 auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: var(--moonlight);
+      letter-spacing: -0.055em;
+      line-height: 0.96;
+    }
+
+    h1 {
+      max-width: 690px;
+      font-size: clamp(3.35rem, 7.3vw, 6.25rem);
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(2.3rem, 4.6vw, 4.6rem);
+      font-weight: 900;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      font-weight: 850;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+    }
+
+    .accent {
+      color: var(--ice);
+      text-shadow: 0 0 30px rgba(143, 216, 234, 0.26);
+    }
+
+    .accent.amber {
+      color: var(--amber);
+      text-shadow: 0 0 28px rgba(221, 170, 89, 0.18);
+    }
+
+    .lede {
+      max-width: 625px;
+      margin: 24px 0 0;
+      color: rgba(170, 182, 196, 0.9);
+      font-size: clamp(1.04rem, 1.5vw, 1.22rem);
+      font-weight: 650;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .trust-chip {
+      border: 1px solid rgba(243, 246, 248, 0.08);
+      border-radius: 13px;
+      padding: 8px 10px;
+      background: rgba(243, 246, 248, 0.035);
+      color: rgba(243, 246, 248, 0.66);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .device-stage {
+      position: relative;
+      min-height: 690px;
+      perspective: 1500px;
+    }
+
+    .glow {
+      position: absolute;
+      inset: 90px 8% auto;
+      height: 470px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(143, 216, 234, 0.2), rgba(143, 216, 234, 0.07) 36%, transparent 70%);
+      filter: blur(10px);
+      animation: breathe 6s ease-in-out infinite alternate;
+    }
+
+    .device {
+      position: absolute;
+      width: min(58vw, 310px);
+      min-width: 248px;
+      border: 1px solid rgba(243, 246, 248, 0.2);
+      border-radius: 42px;
+      padding: 10px;
+      background:
+        linear-gradient(145deg, rgba(243, 246, 248, 0.2), rgba(143, 216, 234, 0.04) 18%, rgba(2, 4, 8, 0.92) 62%),
+        #05080d;
+      box-shadow:
+        0 34px 90px rgba(0, 0, 0, 0.58),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      animation: float-device 6.5s ease-in-out infinite alternate;
+    }
+
+    .device.home {
+      top: 8px;
+      right: 7%;
+      z-index: 3;
+      transform: rotate(-7deg);
+    }
+
+    .device.editor {
+      top: 160px;
+      left: 3%;
+      z-index: 2;
+      width: min(50vw, 274px);
+      transform: rotate(9deg);
+      animation-delay: -1.5s;
+    }
+
+    .device.fits {
+      right: 0;
+      bottom: 10px;
+      z-index: 1;
+      width: min(48vw, 260px);
+      transform: rotate(13deg);
+      animation-delay: -3s;
+    }
+
+    .phone-screen {
+      overflow: hidden;
+      aspect-ratio: 1206 / 2622;
+      border: 1px solid rgba(243, 246, 248, 0.12);
+      border-radius: 34px;
+      background: var(--obsidian);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.42);
+    }
+
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid rgba(243, 246, 248, 0.09);
+      border-radius: 24px;
+      margin-top: -38px;
+      background: rgba(143, 216, 234, 0.08);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .stat {
+      padding: 24px;
+      background: rgba(17, 24, 32, 0.86);
+      backdrop-filter: blur(18px);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--moonlight);
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(170, 182, 196, 0.78);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid rgba(243, 246, 248, 0.08);
+      margin-top: 54px;
+      background: rgba(2, 4, 8, 0.34);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 0;
+      animation: marquee 34s linear infinite;
+    }
+
+    .marquee span {
+      color: rgba(243, 246, 248, 0.78);
+      font-size: 1.02rem;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .marquee i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber);
+      box-shadow: 0 0 14px rgba(221, 170, 89, 0.44);
+    }
+
+    .marquee i:nth-of-type(2n) {
+      background: var(--ice);
+      box-shadow: 0 0 14px rgba(143, 216, 234, 0.48);
+    }
+
+    .section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-head p {
+      max-width: 520px;
+      margin: 0;
+      color: rgba(170, 182, 196, 0.82);
+      font-size: 1rem;
+      font-weight: 650;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .card,
+    .split-card,
+    .workflow-card,
+    .policy-card,
+    .cta-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(243, 246, 248, 0.11);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(145deg, rgba(243, 246, 248, 0.065), rgba(243, 246, 248, 0.015)),
+        rgba(17, 24, 32, 0.78);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+    }
+
+    .card {
+      min-height: 245px;
+      padding: 24px;
+    }
+
+    .card .label,
+    .step .label {
+      display: inline-flex;
+      margin-bottom: 18px;
+      border: 1px solid rgba(143, 216, 234, 0.22);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--ice);
+      background: rgba(143, 216, 234, 0.07);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      margin: 14px 0 0;
+      color: rgba(170, 182, 196, 0.8);
+      font-size: 0.95rem;
+      font-weight: 650;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .copy-panel {
+      padding: clamp(30px, 5vw, 54px);
+    }
+
+    .copy-panel p {
+      max-width: 590px;
+      margin: 20px 0 0;
+      color: rgba(170, 182, 196, 0.82);
+      font-size: 1rem;
+      font-weight: 650;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 28px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      border: 1px solid rgba(243, 246, 248, 0.08);
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(2, 4, 8, 0.22);
+      color: rgba(243, 246, 248, 0.78);
+      font-size: 0.95rem;
+      font-weight: 750;
+    }
+
+    .shot-panel {
+      display: grid;
+      place-items: center;
+      min-height: 640px;
+      padding: 30px;
+    }
+
+    .single-device {
+      position: relative;
+      width: min(100%, 330px);
+      border: 1px solid rgba(243, 246, 248, 0.2);
+      border-radius: 42px;
+      padding: 10px;
+      background: #05080d;
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.58), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      transform: rotate(-4deg);
+    }
+
+    .single-device.alt {
+      transform: rotate(4deg);
+    }
+
+    .before-after {
+      position: relative;
+      min-height: 470px;
+      padding: 28px;
+    }
+
+    .comparison {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      min-height: 420px;
+      border: 1px solid rgba(243, 246, 248, 0.1);
+      border-radius: 24px;
+      background: #000;
+    }
+
+    .comparison img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .comparison .before {
+      width: 50%;
+      filter: saturate(0.52) brightness(0.58) contrast(0.82);
+      object-position: left center;
+    }
+
+    .comparison .after {
+      clip-path: inset(0 0 0 50%);
+      filter: saturate(1.08) brightness(1.08) contrast(1.08);
+    }
+
+    .divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: var(--moonlight);
+      box-shadow: 0 0 24px rgba(143, 216, 234, 0.7);
+    }
+
+    .compare-label {
+      position: absolute;
+      top: 18px;
+      border: 1px solid rgba(243, 246, 248, 0.12);
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(2, 4, 8, 0.58);
+      color: rgba(243, 246, 248, 0.82);
+      font-size: 0.74rem;
+      font-weight: 900;
+      backdrop-filter: blur(10px);
+    }
+
+    .compare-label.left {
+      left: 18px;
+    }
+
+    .compare-label.right {
+      right: 18px;
+    }
+
+    .fits-workflow {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .workflow-card {
+      padding: clamp(28px, 5vw, 52px);
+    }
+
+    .workflow-steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: start;
+      border: 1px solid rgba(243, 246, 248, 0.08);
+      border-radius: 20px;
+      padding: 15px;
+      background: rgba(2, 4, 8, 0.22);
+    }
+
+    .step-number {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(143, 216, 234, 0.12);
+      color: var(--ice);
+      font-size: 0.8rem;
+      font-weight: 950;
+    }
+
+    .step strong {
+      display: block;
+      color: var(--moonlight);
+      font-size: 1rem;
+      font-weight: 850;
+    }
+
+    .step span:last-child {
+      display: block;
+      margin-top: 3px;
+      color: rgba(170, 182, 196, 0.78);
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .policy-section {
+      padding: 86px 0 20px;
+    }
+
+    .policy-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .policy-intro {
+      position: sticky;
+      top: 104px;
+      padding-right: clamp(0px, 3vw, 28px);
+    }
+
+    .policy-intro p:not(.eyebrow) {
+      margin: 20px 0 0;
+      color: rgba(170, 182, 196, 0.82);
+      font-size: 1rem;
+      font-weight: 650;
+    }
+
+    .policy-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .policy-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .policy-card {
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .policy-card h3 {
+      font-size: 1.24rem;
+      letter-spacing: -0.035em;
+      line-height: 1.12;
+    }
+
+    .policy-card p {
+      margin: 12px 0 0;
+      color: rgba(170, 182, 196, 0.82);
+      font-size: 0.95rem;
+      font-weight: 650;
+    }
+
+    .policy-card a {
+      color: var(--ice);
+      font-weight: 850;
+      text-decoration: underline;
+      text-decoration-color: rgba(143, 216, 234, 0.36);
+      text-underline-offset: 4px;
+    }
+
+    .policy-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .policy-list li {
+      border-left: 2px solid rgba(143, 216, 234, 0.5);
+      padding-left: 12px;
+      color: rgba(243, 246, 248, 0.78);
+      font-size: 0.94rem;
+      font-weight: 680;
+    }
+
+    .site-footer {
+      border-top: 1px solid rgba(243, 246, 248, 0.08);
+      padding: 28px 0 36px;
+      color: rgba(170, 182, 196, 0.72);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      color: rgba(243, 246, 248, 0.82);
+    }
+
+    .cta {
+      padding: 86px 0 112px;
+    }
+
+    .cta-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: clamp(32px, 5vw, 58px);
+      background:
+        radial-gradient(circle at 80% 20%, rgba(221, 170, 89, 0.12), transparent 30rem),
+        radial-gradient(circle at 10% 80%, rgba(143, 216, 234, 0.14), transparent 28rem),
+        rgba(17, 24, 32, 0.76);
+    }
+
+    .cta p {
+      max-width: 680px;
+      margin: 18px 0 0;
+      color: rgba(170, 182, 196, 0.82);
+      font-size: 1.04rem;
+      font-weight: 650;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float-device {
+      from {
+        margin-top: -8px;
+      }
+      to {
+        margin-top: 8px;
+      }
+    }
+
+    @keyframes breathe {
+      from {
+        transform: scale(0.96);
+        opacity: 0.72;
+      }
+      to {
+        transform: scale(1.04);
+        opacity: 1;
+      }
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .split-section,
+      .fits-workflow,
+      .policy-layout,
+      .cta-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 0;
+      }
+
+      .policy-intro {
+        position: static;
+        padding-right: 0;
+      }
+
+      .device-stage {
+        min-height: 690px;
+      }
+
+      .feature-grid,
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .shell {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav {
+        min-height: 66px;
+      }
+
+      .nav-links a:not(.mobile-keep) {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 48px;
+        padding-bottom: 66px;
+      }
+
+      .hero-copy {
+        width: 100%;
+        min-width: 0;
+      }
+
+      h1 {
+        max-width: 100%;
+        font-size: 3.1rem;
+        line-height: 1;
+        overflow-wrap: break-word;
+      }
+
+      .lede {
+        max-width: 100%;
+        overflow-wrap: break-word;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .hero-actions .button {
+        min-width: 0;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .trust-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .trust-chip {
+        display: grid;
+        min-width: 0;
+        place-items: center;
+        text-align: center;
+      }
+
+      .device-stage {
+        min-height: 650px;
+        overflow: hidden;
+      }
+
+      .device {
+        width: 226px;
+        min-width: 0;
+      }
+
+      .device.home {
+        right: 2%;
+      }
+
+      .device.editor {
+        top: 190px;
+        left: -4px;
+      }
+
+      .device.fits {
+        right: -6px;
+        bottom: 14px;
+      }
+
+      .feature-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 58px 0;
+      }
+
+      .policy-section {
+        padding-top: 58px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 16px;
+      }
+
+      .shot-panel {
+        min-height: 520px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: 2.82rem;
+      }
+
+      .device-stage {
+        min-height: 610px;
+      }
+
+      .device {
+        width: 210px;
+        border-radius: 36px;
+      }
+
+      .phone-screen {
+        border-radius: 30px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 1ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="landing-assets/app-icon.png" width="36" height="36" alt="">
+        </span>
+        <span>AstroFinish</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#fits">FITS Editing</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#privacy">Privacy</a>
+        <a class="mobile-keep" href="#download">Download</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy reveal visible">
+        <p class="eyebrow">Astro photo editor for iPhone</p>
+        <h1>Finish deep-sky photos and <span class="accent">FITS stacks</span> on your phone.</h1>
+        <p class="lede">AstroFinish helps you import telescope captures, reveal faint nebula detail, reduce noise, tame stars, and export a finished image without sending your photos to the cloud.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#download">Download AstroFinish</a>
+          <a class="button" href="#fits">See FITS workflow</a>
+        </div>
+        <div class="trust-row" aria-label="Product trust notes">
+          <span class="trust-chip">No account</span>
+          <span class="trust-chip">No cloud upload</span>
+          <span class="trust-chip">Local editing</span>
+          <span class="trust-chip">FITS sessions</span>
+        </div>
+      </div>
+
+      <div class="device-stage" aria-label="AstroFinish app screenshots">
+        <div class="glow" aria-hidden="true"></div>
+        <article class="device home">
+          <div class="phone-screen">
+            <img src="landing-assets/astrofinish-home.jpg" alt="AstroFinish home screen with import options">
+          </div>
+        </article>
+        <article class="device editor">
+          <div class="phone-screen">
+            <img src="landing-assets/astrofinish-editor.jpg" alt="AstroFinish editor with before and after controls">
+          </div>
+        </article>
+        <article class="device fits">
+          <div class="phone-screen">
+            <img src="landing-assets/astrofinish-prostack.jpg" alt="AstroFinish Pro Stack FITS editing screen">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell reveal">
+      <div class="stats" aria-label="AstroFinish capabilities">
+        <div class="stat"><strong>FITS</strong><span>session import and visible preview</span></div>
+        <div class="stat"><strong>20</strong><span>editing controls for light, color, detail, and stars</span></div>
+        <div class="stat"><strong>M42</strong><span>deep-sky finishing workflow</span></div>
+        <div class="stat"><strong>0</strong><span>required accounts or cloud uploads</span></div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Auto Astro Polish</span><i></i><span>FITS Session Import</span><i></i><span>Deep Sky Reveal</span><i></i><span>Noise Reduction</span><i></i><span>Star Control</span><i></i><span>Batch Finish</span><i></i>
+        <span>Auto Astro Polish</span><i></i><span>FITS Session Import</span><i></i><span>Deep Sky Reveal</span><i></i><span>Noise Reduction</span><i></i><span>Star Control</span><i></i><span>Batch Finish</span><i></i>
+      </div>
+    </div>
+
+    <section id="features" class="section shell reveal">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">What it does</p>
+          <h2>Made for people who shoot the night sky.</h2>
+        </div>
+        <p>Import one capture, a batch, or a FITS session. Then use presets and focused astro controls to get from faint data to a finished image.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="card">
+          <span class="label">Auto polish</span>
+          <h3>Start with a clean first pass.</h3>
+          <p>Apply a balanced look for telescope captures, then fine tune exposure, contrast, color, denoise, detail, and stars.</p>
+        </article>
+        <article class="card">
+          <span class="label">Deep sky</span>
+          <h3>Bring out faint nebula detail.</h3>
+          <p>Use nebula reveal, sky background, star reduction, and color correction controls built around astro photos.</p>
+        </article>
+        <article class="card">
+          <span class="label">FITS editing</span>
+          <h3>Open scientific captures.</h3>
+          <p>Preview linear FITS data, reveal the image, and move into finishing controls without leaving your iPhone.</p>
+        </article>
+        <article class="card">
+          <span class="label">Batch finish</span>
+          <h3>Work through a night of captures.</h3>
+          <p>Queue multiple images, apply looks consistently, and export finished photos for sharing or archiving.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell reveal">
+      <div class="split-section">
+        <div class="split-card before-after">
+          <div class="comparison" aria-label="Before and after nebula comparison">
+            <img class="after" src="landing-assets/home-m42-preview.jpg" alt="Finished nebula preview">
+            <img class="before" src="landing-assets/home-m42-preview.jpg" alt="Dim nebula preview before editing">
+            <span class="divider" aria-hidden="true"></span>
+            <span class="compare-label left">Before</span>
+            <span class="compare-label right">After</span>
+          </div>
+        </div>
+        <div class="split-card copy-panel">
+          <p class="eyebrow">From faint to finished</p>
+          <h2>See the image while you shape it.</h2>
+          <p>AstroFinish is built around visual editing, not technical setup. Open a capture, compare before and after, choose a look, then refine the details that matter for astrophotography.</p>
+          <ul class="check-list">
+            <li>Split view for before and after comparisons.</li>
+            <li>Astro-focused presets like Auto Astro Polish and Nebula Pop.</li>
+            <li>Controls for light, color, detail, sky background, and star reduction.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="fits" class="section shell reveal">
+      <div class="fits-workflow">
+        <div class="workflow-card">
+          <p class="eyebrow">FITS editing</p>
+          <h2>Import FITS sessions. Reveal the image. Finish it beautifully.</h2>
+          <p class="lede">Pro Stack turns telescope session data into something you can inspect and finish on the same device. It is built for astronomers who want a portable path from FITS files to a shareable result.</p>
+
+          <div class="workflow-steps">
+            <div class="step">
+              <span class="step-number">01</span>
+              <span><strong>Import a FITS session</strong><span>Bring in light, dark, flat, and related frames from Files.</span></span>
+            </div>
+            <div class="step">
+              <span class="step-number">02</span>
+              <span><strong>Preview linear FITS data</strong><span>Inspect the capture before stretching and polishing it.</span></span>
+            </div>
+            <div class="step">
+              <span class="step-number">03</span>
+              <span><strong>Clean, align, and reveal</strong><span>Move through the astro flow: clean sky, natural color, detail reveal, noise reduction, star control, and final polish.</span></span>
+            </div>
+            <div class="step">
+              <span class="step-number">04</span>
+              <span><strong>Open in the editor</strong><span>Continue with the same finishing controls used for single images.</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="split-card shot-panel">
+          <div class="single-device alt">
+            <div class="phone-screen">
+              <img src="landing-assets/astrofinish-prostack.jpg" alt="FITS Pro Stack workflow in AstroFinish">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="section shell reveal">
+      <div class="split-section">
+        <div class="split-card shot-panel">
+          <div class="single-device">
+            <div class="phone-screen">
+              <img src="landing-assets/astrofinish-editor.jpg" alt="AstroFinish editor controls">
+            </div>
+          </div>
+        </div>
+        <div class="split-card copy-panel">
+          <p class="eyebrow">Editing flow</p>
+          <h2>Simple enough for quick edits. Deep enough for real control.</h2>
+          <p>Use the guided tabs when you want precision, or start from a built-in look when you want a faster result. The original image stays untouched.</p>
+          <ul class="check-list">
+            <li>Light: exposure, contrast, highlights, shadows, and black point.</li>
+            <li>Color: saturation, temperature, tint, and orange glow correction.</li>
+            <li>Detail: nebula reveal, sharpening, denoise, and star control.</li>
+            <li>Export: save finished images locally when you are ready.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="policy-section shell reveal">
+      <div class="policy-layout">
+        <div class="policy-intro">
+          <p class="eyebrow">Privacy Policy</p>
+          <h2>Local-first by design.</h2>
+          <p>AstroFinish is built for editing astronomy images on your device. The app does not require an account, does not include advertising or analytics SDKs, and does not upload your photos to AstroFinish servers.</p>
+          <div class="policy-meta" aria-label="Privacy summary">
+            <span class="trust-chip">Last updated May 1, 2026</span>
+            <span class="trust-chip">No tracking</span>
+            <span class="trust-chip">No collected data</span>
+          </div>
+        </div>
+
+        <div class="policy-stack">
+          <article class="policy-card">
+            <h3>Data AstroFinish collects</h3>
+            <p>AstroFinish does not collect personal data from the app. There are no AstroFinish accounts, analytics events, advertising identifiers, tracking domains, or cloud sync services in the app.</p>
+            <ul class="policy-list">
+              <li>Photos and FITS files are opened only when you choose them through Photos or Files.</li>
+              <li>Editing, previews, stacking, export cards, and finished images are generated on device.</li>
+              <li>AstroFinish does not sell, rent, share, or broker user data.</li>
+            </ul>
+          </article>
+
+          <article class="policy-card">
+            <h3>Photos, Files, and exports</h3>
+            <p>Imported images are used to provide editing and export features. AstroFinish requests Photos permission only when saving finished output or creating/finding the AstroFinish Exports album. Original imported files are not overwritten.</p>
+          </article>
+
+          <article class="policy-card">
+            <h3>Download links</h3>
+            <p>If you paste an HTTP or HTTPS download link, AstroFinish contacts that link to download the selected FITS or ZIP file into app-local storage. The website or telescope service hosting that link may receive ordinary request information, such as your IP address, under its own privacy practices.</p>
+          </article>
+
+          <article class="policy-card">
+            <h3>Local app data</h3>
+            <p>AstroFinish may store app-only settings, user presets, recent edit metadata, thumbnails, and purchase unlock status locally on your device. This information is used for app functionality and is not transmitted to AstroFinish.</p>
+          </article>
+
+          <article class="policy-card">
+            <h3>Purchases</h3>
+            <p>If AstroFinish offers an in-app purchase, payment and refund handling are processed by Apple. AstroFinish does not receive or store your payment card details.</p>
+          </article>
+
+          <article id="support" class="policy-card">
+            <h3>Privacy choices and support</h3>
+            <p>You can manage Photos access in the iOS Settings app. You can remove local AstroFinish data by deleting the app from your device. For app support or privacy questions, use the support contact provided with AstroFinish on the App Store listing.</p>
+          </article>
+
+          <article class="policy-card">
+            <h3>Changes to this policy</h3>
+            <p>If AstroFinish's privacy practices change, this policy and the App Store privacy details should be updated before submitting a new build or app update.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="cta shell reveal">
+      <div class="cta-card">
+        <div>
+          <p class="eyebrow">Download AstroFinish</p>
+          <h2>Turn your next night of captures into finished photos.</h2>
+          <p>Import telescope images, edit FITS sessions, polish deep-sky detail, and export locally from your iPhone.</p>
+        </div>
+        <a class="button primary" href="#top">Get AstroFinish</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner shell">
+      <span>AstroFinish by Cody Adams</span>
+      <div class="footer-links" aria-label="Footer navigation">
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#support">Support</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      }, { threshold: 0.16 });
+      observer.observe(element);
+    });
+  </script>
+</body>
+</html>
