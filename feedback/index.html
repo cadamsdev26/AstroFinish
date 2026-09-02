@@ -4,22 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#020408">
-  <title>Help Shape AstroFinish</title>
-  <meta name="description" content="Share feedback and help shape the next version of AstroFinish.">
+  <title>AstroFinish Feedback</title>
+  <meta name="description" content="Tell me what you want to see next in AstroFinish.">
   <link rel="icon" type="image/png" href="../landing-assets/app-icon.png">
   <style>
     :root {
       --obsidian:#020408;--midnight:#07111d;--graphite:#111820;--slate:#26313b;
-      --moonlight:#f3f6f8;--mist:#aab6c4;--metal:#707a84;--ice:#8fd8ea;--amber:#ddaa59;
-      --line:rgba(243,246,248,.12);--glass:rgba(17,24,32,.76);
+      --moonlight:#f3f6f8;--mist:#aab6c4;--ice:#8fd8ea;--amber:#ddaa59;
+      --line:rgba(243,246,248,.12);
     }
-    *{box-sizing:border-box}html{color-scheme:dark}body{margin:0;color:var(--moonlight);font-family:ui-rounded,"SF Pro Rounded","Avenir Next Rounded",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 15% 0,rgba(143,216,234,.13),transparent 30rem),radial-gradient(circle at 90% 8%,rgba(221,170,89,.07),transparent 28rem),linear-gradient(140deg,var(--obsidian),var(--midnight) 48%,#000);min-height:100vh;line-height:1.5}
-    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.24;background-image:radial-gradient(circle,rgba(243,246,248,.72) 0 1px,transparent 1.7px);background-size:151px 173px;z-index:-1}
-    a{color:inherit;text-decoration:none}.shell{width:min(100% - 32px,760px);margin:0 auto}.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{display:flex;align-items:center;gap:11px;font-weight:850}.brand img{width:38px;height:38px;border-radius:12px}.back{font-size:.82rem;font-weight:800;color:var(--mist);padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(243,246,248,.035)}
-    main{padding:34px 0 72px}.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid rgba(143,216,234,.25);border-radius:999px;background:rgba(143,216,234,.07);color:var(--ice);font-size:.71rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.hero h1{font-size:clamp(2.6rem,8vw,4.8rem);line-height:.97;letter-spacing:-.055em;margin:18px 0 16px}.hero p{color:var(--mist);font-size:1.05rem;max-width:650px;margin:0}.time{display:inline-flex;margin-top:18px;padding:8px 11px;border-radius:12px;background:rgba(243,246,248,.04);border:1px solid rgba(243,246,248,.08);color:rgba(243,246,248,.72);font-size:.78rem;font-weight:800}
-    form{display:grid;gap:16px;margin-top:34px}.card{padding:20px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(17,24,32,.82),rgba(7,17,29,.72));box-shadow:0 22px 60px rgba(0,0,0,.22)}.card h2{margin:0 0 6px;font-size:1.08rem;letter-spacing:-.02em}.hint{margin:0 0 14px;color:rgba(170,182,196,.74);font-size:.84rem}.options{display:grid;gap:8px}.option{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1px solid rgba(243,246,248,.08);border-radius:14px;background:rgba(243,246,248,.025);cursor:pointer}.option:hover{border-color:rgba(143,216,234,.24);background:rgba(143,216,234,.05)}input[type=radio],input[type=checkbox]{accent-color:var(--ice);margin-top:3px}textarea,input[type=text],input[type=email],select{width:100%;border:1px solid rgba(243,246,248,.11);border-radius:14px;padding:12px 13px;background:rgba(2,4,8,.52);color:var(--moonlight);font:inherit;outline:none}textarea{min-height:112px;resize:vertical}textarea:focus,input:focus,select:focus{border-color:rgba(143,216,234,.55);box-shadow:0 0 0 3px rgba(143,216,234,.08)}
-    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.submit{appearance:none;border:1px solid rgba(243,246,248,.65);border-radius:999px;padding:13px 19px;background:linear-gradient(135deg,var(--moonlight),#dcecf3 52%,var(--ice));color:var(--obsidian);font:inherit;font-weight:900;cursor:pointer;box-shadow:0 18px 36px rgba(143,216,234,.16)}.privacy-note{margin:11px 2px 0;color:rgba(170,182,196,.64);font-size:.76rem}.error{display:none;margin-top:10px;color:#ffd0c7;font-size:.84rem;font-weight:700}.footer{padding:26px 0 36px;color:rgba(170,182,196,.58);font-size:.76rem;text-align:center}
-    @media(max-width:620px){main{padding-top:20px}.feature-grid{grid-template-columns:1fr}.card{padding:17px}.nav{padding-top:16px}.hero h1{font-size:2.85rem}}
+    *{box-sizing:border-box}
+    html{color-scheme:dark}
+    body{margin:0;min-height:100vh;color:var(--moonlight);font-family:ui-rounded,"SF Pro Rounded","Avenir Next Rounded",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;background:radial-gradient(circle at 15% 0,rgba(143,216,234,.13),transparent 30rem),radial-gradient(circle at 90% 8%,rgba(221,170,89,.07),transparent 28rem),linear-gradient(140deg,var(--obsidian),var(--midnight) 48%,#000)}
+    body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.22;background-image:radial-gradient(circle,rgba(243,246,248,.72) 0 1px,transparent 1.7px);background-size:151px 173px}
+    a{color:inherit;text-decoration:none}.shell{width:min(100% - 32px,760px);margin:0 auto}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{display:flex;align-items:center;gap:11px;font-weight:850}.brand img{width:38px;height:38px;border-radius:12px}.back{font-size:.82rem;font-weight:800;color:var(--mist);padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(243,246,248,.035)}
+    main{padding:34px 0 72px}.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid rgba(143,216,234,.25);border-radius:999px;background:rgba(143,216,234,.07);color:var(--ice);font-size:.71rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.hero h1{font-size:clamp(2.7rem,8vw,4.8rem);line-height:.97;letter-spacing:-.055em;margin:18px 0 16px}.hero>p{color:var(--mist);font-size:1.05rem;max-width:650px;margin:0}.time{display:inline-flex;margin-top:18px;padding:8px 11px;border-radius:12px;background:rgba(243,246,248,.04);border:1px solid rgba(243,246,248,.08);color:rgba(243,246,248,.72);font-size:.78rem;font-weight:800}
+    .promise{margin-top:22px;padding:17px 18px;border:1px solid rgba(143,216,234,.28);border-radius:18px;background:rgba(143,216,234,.075)}.promise strong{display:block;margin-bottom:4px;color:var(--moonlight);font-size:.95rem}.promise p{margin:0;color:rgba(243,246,248,.78);font-size:.88rem}
+    form{display:grid;gap:16px;margin-top:32px}.card{padding:20px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(17,24,32,.82),rgba(7,17,29,.72));box-shadow:0 22px 60px rgba(0,0,0,.22)}.card h2{margin:0 0 6px;font-size:1.08rem;letter-spacing:-.02em}.hint{margin:0 0 14px;color:rgba(170,182,196,.75);font-size:.84rem}.small-promise{margin:0 0 14px;padding:10px 12px;border-left:3px solid var(--ice);border-radius:8px;background:rgba(143,216,234,.06);color:rgba(243,246,248,.76);font-size:.82rem}
+    .options{display:grid;gap:8px}.option{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1px solid rgba(243,246,248,.08);border-radius:14px;background:rgba(243,246,248,.025);cursor:pointer}.option:hover{border-color:rgba(143,216,234,.24);background:rgba(143,216,234,.05)}input[type=radio],input[type=checkbox]{accent-color:var(--ice);margin-top:3px}textarea,input[type=email],select{width:100%;border:1px solid rgba(243,246,248,.11);border-radius:14px;padding:12px 13px;background:rgba(2,4,8,.52);color:var(--moonlight);font:inherit;outline:none}textarea{min-height:112px;resize:vertical}textarea:focus,input:focus,select:focus{border-color:rgba(143,216,234,.55);box-shadow:0 0 0 3px rgba(143,216,234,.08)}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.actions{display:flex;align-items:center;gap:12px;margin-top:4px}.submit{appearance:none;border:1px solid rgba(243,246,248,.65);border-radius:999px;padding:13px 21px;background:linear-gradient(135deg,var(--moonlight),#dcecf3 52%,var(--ice));color:var(--obsidian);font:inherit;font-weight:900;cursor:pointer;box-shadow:0 18px 36px rgba(143,216,234,.16)}.submit:disabled{cursor:wait;opacity:.62}.status{display:none;padding:14px 16px;border-radius:16px;font-size:.88rem;font-weight:750}.status.success{display:block;border:1px solid rgba(143,216,234,.24);background:rgba(143,216,234,.08);color:var(--moonlight)}.status.failure{display:block;border:1px solid rgba(221,170,89,.28);background:rgba(221,170,89,.08);color:#f5dfbd}.privacy-note{margin:0 2px;color:rgba(170,182,196,.65);font-size:.76rem}.privacy-note a{color:rgba(143,216,234,.85);text-decoration:underline;text-underline-offset:2px}.error{display:none;margin-top:10px;color:#ffd0c7;font-size:.84rem;font-weight:700}.footer{padding:26px 0 36px;color:rgba(170,182,196,.58);font-size:.76rem;text-align:center}.honeypot{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+    @media(max-width:620px){main{padding-top:20px}.feature-grid{grid-template-columns:1fr}.card{padding:17px}.nav{padding-top:16px}.hero h1{font-size:2.85rem}.actions{align-items:stretch;flex-direction:column}.submit{width:100%}}
   </style>
 </head>
 <body>
@@ -30,15 +35,22 @@
 
   <main class="shell">
     <section class="hero">
-      <span class="eyebrow">Help shape AstroFinish</span>
-      <h1>What should I build <span style="color:var(--ice)">next?</span></h1>
-      <p>AstroFinish is being actively improved, and your real-world experience matters more than a feature wishlist made in a vacuum. Tell me what works, what gets in your way, and what would make finishing your astro photos easier.</p>
-      <span class="time">About 60–90 seconds</span>
+      <span class="eyebrow">AstroFinish feedback</span>
+      <h1>Got a minute? I want your <span style="color:var(--ice)">opinion.</span></h1>
+      <p>I've got a few ideas for where to take AstroFinish next, but I'd rather hear from the people actually using it before I spend time on the wrong stuff. Tell me what you use, what gives you trouble, and what you'd genuinely like to see added.</p>
+      <span class="time">Usually takes about a minute</span>
+
+      <div class="promise">
+        <strong>One promise up front</strong>
+        <p>Everything you can use in AstroFinish today will stay free. I am not going to take an existing feature away and put it behind a paywall. The pricing questions below are only about brand-new, optional features I may build in the future.</p>
+      </div>
     </section>
 
     <form id="feedbackForm">
+      <div class="honeypot" aria-hidden="true"><label>Leave this blank <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
       <section class="card">
-        <h2>1. What do you primarily shoot with?</h2>
+        <h2>1. What are you shooting with?</h2>
         <p class="hint">Pick the closest match.</p>
         <div class="options">
           <label class="option"><input required type="radio" name="gear" value="DWARF 3"><span>DWARF 3</span></label>
@@ -46,7 +58,7 @@
           <label class="option"><input type="radio" name="gear" value="Seestar S50"><span>Seestar S50</span></label>
           <label class="option"><input type="radio" name="gear" value="Seestar S30"><span>Seestar S30</span></label>
           <label class="option"><input type="radio" name="gear" value="DSLR / mirrorless"><span>DSLR / mirrorless</span></label>
-          <label class="option"><input type="radio" name="gear" value="Dedicated astro camera"><span>Dedicated astro camera / traditional rig</span></label>
+          <label class="option"><input type="radio" name="gear" value="Dedicated astro camera / traditional rig"><span>Dedicated astro camera / traditional rig</span></label>
           <label class="option"><input type="radio" name="gear" value="Phone"><span>Phone / phone-through-telescope</span></label>
           <label class="option"><input type="radio" name="gear" value="Other"><span>Other</span></label>
         </div>
@@ -56,122 +68,174 @@
         <h2>2. What do you use AstroFinish for most?</h2>
         <select name="usage" required>
           <option value="">Choose one…</option>
-          <option>Quick one-tap finishing</option><option>Manual editing</option><option>FITS / Pro Stack</option><option>Noise and background cleanup</option><option>Color and nebula detail</option><option>Star control</option><option>Export / sharing</option><option>I am still figuring it out</option>
+          <option>Quick finishing / presets</option>
+          <option>Manual editing</option>
+          <option>FITS / Pro Stack</option>
+          <option>Noise and background cleanup</option>
+          <option>Color and nebula detail</option>
+          <option>Star control</option>
+          <option>Export / sharing</option>
+          <option>I'm still figuring it out</option>
         </select>
       </section>
 
       <section class="card">
-        <h2>3. What's the hardest part of processing your astro photos today?</h2>
-        <p class="hint">This is the most valuable answer in the survey.</p>
-        <textarea name="hardest" required placeholder="Example: removing gradients without destroying faint nebula detail…"></textarea>
+        <h2>3. What part of processing gives you the most trouble?</h2>
+        <p class="hint">A sentence or two is plenty.</p>
+        <textarea name="hardest" required placeholder="For example: getting rid of a gradient without losing faint detail."></textarea>
       </section>
 
       <section class="card">
-        <h2>4. Which future features excite you most?</h2>
+        <h2>4. If I worked on three of these next, which would you pick?</h2>
         <p class="hint">Choose up to three.</p>
         <div class="feature-grid" id="featureOptions">
-          <label class="option"><input type="checkbox" name="feature" value="Smart Finish"><span>Smart Finish — analyze and automatically finish an image</span></label>
-          <label class="option"><input type="checkbox" name="feature" value="AI diagnosis"><span>AI diagnosis — explain what is wrong and how to fix it</span></label>
-          <label class="option"><input type="checkbox" name="feature" value="Better gradient removal"><span>Smarter gradient / light-pollution removal</span></label>
+          <label class="option"><input type="checkbox" name="feature" value="Smart Finish"><span>Smart Finish — look at the image, suggest a finish, and apply it</span></label>
+          <label class="option"><input type="checkbox" name="feature" value="Image checkup"><span>Image checkup — point out issues like noise, clipping, gradients, or star problems</span></label>
+          <label class="option"><input type="checkbox" name="feature" value="Better gradient removal"><span>Better gradient / light-pollution removal</span></label>
           <label class="option"><input type="checkbox" name="feature" value="Better denoise"><span>Better noise reduction</span></label>
           <label class="option"><input type="checkbox" name="feature" value="Telescope profiles"><span>DWARF / Seestar-specific processing profiles</span></label>
-          <label class="option"><input type="checkbox" name="feature" value="Advanced color"><span>Automatic color calibration / correction</span></label>
-          <label class="option"><input type="checkbox" name="feature" value="Star tools"><span>More advanced star tools</span></label>
+          <label class="option"><input type="checkbox" name="feature" value="Automatic color calibration"><span>Automatic color calibration / correction</span></label>
+          <label class="option"><input type="checkbox" name="feature" value="More star tools"><span>More advanced star tools</span></label>
           <label class="option"><input type="checkbox" name="feature" value="FITS improvements"><span>More FITS / stacking improvements</span></label>
-          <label class="option"><input type="checkbox" name="feature" value="Export options"><span>More export formats and options</span></label>
-          <label class="option"><input type="checkbox" name="feature" value="Other"><span>Something else</span></label>
+          <label class="option"><input type="checkbox" name="feature" value="Export improvements"><span>More export formats and options</span></label>
+          <label class="option"><input type="checkbox" name="feature" value="Something else"><span>Something else</span></label>
         </div>
-        <div class="error" id="featureError">Please choose no more than three.</div>
+        <div class="error" id="featureError">Choose up to three.</div>
       </section>
 
       <section class="card">
-        <h2>5. If advanced AstroFinish tools saved you real processing time, how would you rather pay?</h2>
+        <h2>5. How would you feel about optional paid features later on?</h2>
+        <p class="small-promise"><strong>Current AstroFinish features stay free.</strong> This only applies to new tools that do not exist today.</p>
         <div class="options">
-          <label class="option"><input required type="radio" name="payment" value="One-time purchase"><span>One-time purchase</span></label>
-          <label class="option"><input type="radio" name="payment" value="Low-cost annual subscription"><span>Low-cost annual subscription</span></label>
-          <label class="option"><input type="radio" name="payment" value="Either"><span>Either is fine</span></label>
-          <label class="option"><input type="radio" name="payment" value="Free only"><span>I would only use free features</span></label>
+          <label class="option"><input required type="radio" name="payment" value="Prefer one-time purchase"><span>I'd prefer a one-time purchase</span></label>
+          <label class="option"><input type="radio" name="payment" value="Prefer low-cost annual subscription"><span>I'd prefer a low-cost annual subscription</span></label>
+          <label class="option"><input type="radio" name="payment" value="Either is fine"><span>Either is fine if the feature is worth it</span></label>
+          <label class="option"><input type="radio" name="payment" value="Free only"><span>I'd stick with the free features</span></label>
         </div>
       </section>
 
       <section class="card">
-        <h2>6. What feels reasonable for a lifetime AstroFinish Pro unlock?</h2>
+        <h2>6. If a future Pro upgrade only added brand-new tools, what one-time price would feel fair?</h2>
         <select name="lifetime" required>
-          <option value="">Choose one…</option><option>$4.99</option><option>$9.99</option><option>$14.99</option><option>$19.99</option><option>$29.99+</option><option>I would not buy a lifetime unlock</option>
+          <option value="">Choose one…</option>
+          <option>$4.99</option><option>$9.99</option><option>$14.99</option><option>$19.99</option><option>$29.99+</option><option>I wouldn't buy a Pro upgrade</option>
         </select>
       </section>
 
       <section class="card">
-        <h2>7. What feels reasonable for AI-powered Smart Finish / image analysis?</h2>
+        <h2>7. What about Smart Finish?</h2>
+        <p class="hint">Smart Finish would be completely optional. It may need to send the photo you choose to a cloud AI service for analysis; normal AstroFinish editing would remain on-device.</p>
+        <div class="options">
+          <label class="option"><input required type="radio" name="cloudComfort" value="Yes"><span>That's fine with me</span></label>
+          <label class="option"><input type="radio" name="cloudComfort" value="Yes if deleted after processing"><span>Fine if the image is deleted after processing</span></label>
+          <label class="option"><input type="radio" name="cloudComfort" value="Maybe"><span>Maybe — I'd want more details first</span></label>
+          <label class="option"><input type="radio" name="cloudComfort" value="No"><span>No — I want my editing completely local</span></label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>8. If Smart Finish was genuinely useful, what price would feel reasonable?</h2>
+        <p class="hint">The subscription would only cover the optional cloud-powered feature, not anything you already have.</p>
         <select name="aiPrice" required>
-          <option value="">Choose one…</option><option>$9.99/year</option><option>$19.99/year</option><option>$29.99/year</option><option>$1.99/month</option><option>$2.99/month</option><option>$4.99/month</option><option>I would not subscribe for AI features</option>
+          <option value="">Choose one…</option>
+          <option>$9.99/year</option><option>$19.99/year</option><option>$29.99/year</option><option>$1.99/month</option><option>$2.99/month</option><option>$4.99/month</option><option>I wouldn't subscribe to Smart Finish</option>
         </select>
       </section>
 
       <section class="card">
-        <h2>8. Anything else you want AstroFinish to do better?</h2>
-        <textarea name="anything" placeholder="Bugs, confusing controls, missing features, things you love — anything helps."></textarea>
+        <h2>9. Anything else I should know?</h2>
+        <textarea name="anything" placeholder="A bug, a confusing control, something you love, something you hate — whatever comes to mind."></textarea>
       </section>
 
       <section class="card">
-        <h2>Want to test future features?</h2>
-        <p class="hint">Optional. Leave an email if you'd be interested in testing things like Smart Finish before public release.</p>
+        <h2>Want to try new stuff early?</h2>
+        <p class="hint">Optional. Leave an email if you'd like to be considered for future TestFlight builds. I won't use it for marketing.</p>
         <input type="email" name="betaEmail" autocomplete="email" placeholder="you@example.com">
       </section>
 
-      <div class="actions"><button class="submit" type="submit">Send Feedback</button></div>
-      <p class="privacy-note">AstroFinish still has no survey backend. Tapping Send Feedback prepares an email with your answers in your mail app; nothing is sent until you choose Send there.</p>
+      <div id="submitStatus" class="status" role="status" aria-live="polite"></div>
+      <div class="actions"><button id="submitButton" class="submit" type="submit">Send feedback</button></div>
+      <p class="privacy-note">Submitting sends only the answers you entered here through <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a> so I can receive them. This form does not upload any of your AstroFinish photos. If you leave an email, I'll only use it for beta-testing follow-up.</p>
     </form>
   </main>
 
-  <footer class="shell footer">Thank you for helping make AstroFinish better.</footer>
+  <footer class="shell footer">Thanks for using AstroFinish — seriously.</footer>
 
   <script>
     const form = document.getElementById('feedbackForm');
+    const submitButton = document.getElementById('submitButton');
+    const submitStatus = document.getElementById('submitStatus');
     const featureBoxes = [...document.querySelectorAll('input[name="feature"]')];
     const featureError = document.getElementById('featureError');
 
     featureBoxes.forEach(box => box.addEventListener('change', () => {
-      const checked = featureBoxes.filter(x => x.checked);
-      if (checked.length > 3) box.checked = false;
-      featureError.style.display = checked.length > 3 ? 'block' : 'none';
+      const checked = featureBoxes.filter(item => item.checked);
+      if (checked.length > 3) {
+        box.checked = false;
+        featureError.style.display = 'block';
+        setTimeout(() => featureError.style.display = 'none', 2200);
+      } else {
+        featureError.style.display = 'none';
+      }
     }));
 
-    function value(name) {
-      const data = new FormData(form);
-      return (data.get(name) || '').toString().trim();
+    function formValue(name) {
+      const field = form.elements[name];
+      if (!field) return '';
+      if (field instanceof RadioNodeList) return field.value.trim();
+      return (field.value || '').trim();
     }
 
-    form.addEventListener('submit', event => {
+    form.addEventListener('submit', async event => {
       event.preventDefault();
       if (!form.reportValidity()) return;
 
-      const features = featureBoxes.filter(x => x.checked).map(x => x.value);
-      if (features.length > 3) {
-        featureError.style.display = 'block';
-        return;
-      }
-
+      const features = featureBoxes.filter(item => item.checked).map(item => item.value);
       const params = new URLSearchParams(location.search);
-      const source = params.get('source') || 'website';
-      const version = params.get('version') || 'not provided';
-      const lines = [
-        'AstroFinish User Feedback', '',
-        `Source: ${source}`, `App version: ${version}`, '',
-        `Primary gear: ${value('gear')}`,
-        `Main AstroFinish use: ${value('usage')}`, '',
-        'Hardest processing problem:', value('hardest'), '',
-        `Top future features: ${features.length ? features.join(', ') : 'None selected'}`, '',
-        `Preferred payment model: ${value('payment')}`,
-        `Lifetime Pro price: ${value('lifetime')}`,
-        `AI price: ${value('aiPrice')}`, '',
-        'Anything else:', value('anything') || 'No additional comments', '',
-        `Beta tester email: ${value('betaEmail') || 'Not provided'}`
-      ];
+      const payload = {
+        _subject: 'New AstroFinish feedback',
+        _template: 'table',
+        _url: location.href,
+        Source: params.get('source') || 'website',
+        'App version': params.get('version') || 'not provided',
+        Gear: formValue('gear'),
+        'Main use': formValue('usage'),
+        'Biggest processing problem': formValue('hardest'),
+        'Top requested features': features.length ? features.join(', ') : 'None selected',
+        'Paid feature preference': formValue('payment'),
+        'Future Pro one-time price': formValue('lifetime'),
+        'Cloud AI comfort': formValue('cloudComfort'),
+        'Smart Finish price': formValue('aiPrice'),
+        'Additional comments': formValue('anything') || 'None',
+        'Beta email': formValue('betaEmail') || 'Not provided',
+        _honey: formValue('_honey')
+      };
 
-      const subject = encodeURIComponent('AstroFinish User Feedback');
-      const body = encodeURIComponent(lines.join('\n'));
-      window.location.href = `mailto:kajucody@gmail.com?subject=${subject}&body=${body}`;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+      submitStatus.className = 'status';
+      submitStatus.textContent = '';
+
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/kajucody@gmail.com', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json','Accept':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        const result = await response.json();
+        if (!response.ok || result.success === false) throw new Error('Submission failed');
+
+        submitStatus.className = 'status success';
+        submitStatus.textContent = 'Thanks — got it. I really do read these, and this will help decide what I work on next.';
+        form.reset();
+        submitStatus.scrollIntoView({behavior:'smooth',block:'center'});
+      } catch (error) {
+        submitStatus.className = 'status failure';
+        submitStatus.textContent = "I couldn't send that just now. Your answers are still on this page, so nothing is lost. Please try again in a minute.";
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send feedback';
+      }
     });
   </script>
 </body>
