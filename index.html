@@ -76,9 +76,12 @@
           "url": "https://apps.apple.com/us/app/astrofinish/id6763904575"
         },
         "screenshot": [
-          "https://astrofinish.com/landing-assets/astrofinish-home.jpg",
-          "https://astrofinish.com/landing-assets/astrofinish-editor.jpg",
-          "https://astrofinish.com/landing-assets/astrofinish-prostack.jpg"
+          "https://astrofinish.com/landing-assets/screen-looks.jpg",
+          "https://astrofinish.com/landing-assets/screen-hubble.jpg",
+          "https://astrofinish.com/landing-assets/screen-mixer.jpg",
+          "https://astrofinish.com/landing-assets/screen-detail.jpg",
+          "https://astrofinish.com/landing-assets/screen-light.jpg",
+          "https://astrofinish.com/landing-assets/screen-tablet.jpg"
         ],
         "featureList": [
           "Native iPhone and iPad adaptive layouts (landscape and portrait)",
@@ -536,11 +539,15 @@
 
     .phone-screen {
       overflow: hidden;
-      aspect-ratio: 1206 / 2622;
+      aspect-ratio: 900 / 1759;
       border: 1px solid rgba(243, 246, 248, 0.12);
       border-radius: 34px;
       background: var(--obsidian);
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.42);
+    }
+
+    .phone-screen.tall {
+      aspect-ratio: 900 / 1846;
     }
 
     .phone-screen img {
@@ -1003,6 +1010,51 @@
       align-items: center;
     }
 
+    .tablet-showcase {
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      margin-bottom: 20px;
+      padding: clamp(22px, 3.6vw, 44px);
+      border: 1px solid rgba(243, 246, 248, 0.11);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(600px 340px at 50% 48%, rgba(143, 216, 234, 0.12), transparent 70%),
+        linear-gradient(145deg, rgba(243, 246, 248, 0.065), rgba(243, 246, 248, 0.015)),
+        rgba(17, 24, 32, 0.78);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+    }
+
+    .tablet-device {
+      width: min(100%, 940px);
+      border: 1px solid rgba(243, 246, 248, 0.2);
+      border-radius: 30px;
+      padding: 12px;
+      background:
+        linear-gradient(145deg, rgba(243, 246, 248, 0.18), rgba(143, 216, 234, 0.04) 18%, rgba(2, 4, 8, 0.94) 62%),
+        #05080d;
+      box-shadow:
+        0 34px 90px rgba(0, 0, 0, 0.58),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    }
+
+    .tablet-screen {
+      overflow: hidden;
+      aspect-ratio: 1600 / 965;
+      border: 1px solid rgba(243, 246, 248, 0.12);
+      border-radius: 20px;
+      background: var(--obsidian);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.42);
+    }
+
+    .tablet-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .platform-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1333,6 +1385,19 @@
       .shot-panel {
         min-height: 520px;
       }
+
+      .tablet-showcase {
+        padding: 16px;
+      }
+
+      .tablet-device {
+        border-radius: 20px;
+        padding: 7px;
+      }
+
+      .tablet-screen {
+        border-radius: 14px;
+      }
     }
 
     @media (max-width: 420px) {
@@ -1409,17 +1474,17 @@
         <div class="glow" aria-hidden="true"></div>
         <article class="device home">
           <div class="phone-screen">
-            <img src="landing-assets/astrofinish-home.jpg" alt="AstroFinish home screen with Photos, Files, FITS, and sample import options">
+            <img src="landing-assets/screen-looks.jpg" alt="AstroFinish 2.1 editor showing Auto Astro Polish, Look strength, and Nebula Palettes on an emission nebula">
           </div>
         </article>
         <article class="device editor">
           <div class="phone-screen">
-            <img src="landing-assets/astrofinish-editor.jpg" alt="AstroFinish astrophotography editor with before and after split comparison controls">
+            <img src="landing-assets/screen-hubble.jpg" alt="AstroFinish 2.1 Hubble SHO nebula palette transforming an emission nebula into gold and blue">
           </div>
         </article>
         <article class="device fits">
           <div class="phone-screen">
-            <img src="landing-assets/astrofinish-prostack.jpg" alt="AstroFinish FITS Develop and Pro Stack screen for linear telescope captures">
+            <img src="landing-assets/screen-light.jpg" alt="AstroFinish 2.1 Light tool with Exposure, Contrast, Highlights, and Shadows controls">
           </div>
         </article>
       </div>
@@ -1528,7 +1593,7 @@
         <div class="split-card shot-panel">
           <div class="single-device alt">
             <div class="phone-screen">
-              <img src="landing-assets/astrofinish-prostack.jpg" alt="FITS Develop and Pro Stack workflow in AstroFinish">
+              <img src="landing-assets/screen-detail.jpg" alt="AstroFinish Detail and Stars panel with Sharpness, Denoise, Clarity, and Locate Stars to Dim">
             </div>
           </div>
         </div>
@@ -1539,8 +1604,8 @@
       <div class="split-section">
         <div class="split-card shot-panel">
           <div class="single-device">
-            <div class="phone-screen">
-              <img src="landing-assets/astrofinish-editor.jpg" alt="AstroFinish deep-sky editor controls on iOS">
+            <div class="phone-screen tall">
+              <img src="landing-assets/screen-mixer.jpg" alt="AstroFinish 2.1 Color Mixer with eight hue bands, Pick from Photo eyedropper, and Explain Mode">
             </div>
           </div>
         </div>
@@ -1565,6 +1630,14 @@
           <h2>Works with your telescope and the screen in your hands.</h2>
         </div>
         <p>AstroFinish 2.1 runs natively on iPhone and iPad today, with a native Android app in active development.</p>
+      </div>
+
+      <div class="tablet-showcase" aria-label="AstroFinish adaptive iPad and tablet landscape layout">
+        <div class="tablet-device">
+          <div class="tablet-screen">
+            <img src="landing-assets/screen-tablet.jpg" alt="AstroFinish 2.1 adaptive landscape layout with full-height emission nebula preview beside the docked Color Mixer and Explain Mode controls">
+          </div>
+        </div>
       </div>
 
       <div class="platform-grid" aria-label="Supported platforms">
