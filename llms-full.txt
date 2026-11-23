@@ -1,13 +1,14 @@
 # AstroFinish — Complete Product Fact Sheet
 
-> AstroFinish is a local-first astrophotography photo editor and linear FITS developer for iPhone and iPad (with native Android in development). Built for smart-telescope and deep-sky imagers, AstroFinish opens linear FITS files and stacked captures directly on mobile devices — with free core features, no account, no cloud upload, and no tracking.
+> AstroFinish is a local-first astrophotography photo editor and linear FITS developer for iPhone, iPad, and Android (phones & tablets). Built for smart-telescope and deep-sky imagers, AstroFinish opens linear FITS files and stacked captures directly on mobile devices — with free core features, no account, no cloud upload, and no tracking.
 
 - **Website**: https://astrofinish.com/
 - **Apple App Store (iPhone & iPad)**: https://apps.apple.com/us/app/astrofinish/id6763904575
-- **Feedback & Android / TestFlight Early Access**: https://astrofinish.com/feedback/
+- **Google Play (Android Phones & Tablets)**: https://play.google.com/store/apps/details?id=com.codyadams.astrofinish
+- **Feedback & Beta**: https://astrofinish.com/feedback/
 - **Developer**: Cody Adams
-- **Current Version**: 2.1 (iPhone & iPad)
-- **Pricing**: Free on the App Store. All existing features stay free permanently; no account or subscription is required.
+- **Platforms**: iOS & iPadOS (v2.1) · Android (v1.0)
+- **Pricing**: Free on the Apple App Store and Google Play. All existing features stay free permanently; no account or subscription is required.
 - **Privacy**: 100% on-device processing. No analytics SDKs, no ad trackers, no cloud photo sync, and no required login. Original imported photos and FITS files are never overwritten.
 
 ---
@@ -16,7 +17,7 @@
 
 - **iPhone (iOS)**: Available now on the Apple App Store. Compact, thumb-friendly darkroom workflow.
 - **iPad (iPadOS)**: Available now in AstroFinish 2.1. Adaptive wide and tall layouts fill the full iPad screen in both landscape (controls docked beside a full-height photo canvas) and portrait (two-column slider controls below the photo).
-- **Android (Phone & Tablet)**: Native Kotlin + Jetpack Compose app currently in development, targeting the same local-first editing pipeline and FITS workflow. Users can register for Android early access at https://astrofinish.com/feedback/?platform=android.
+- **Android (Phone & Tablet)**: Available now free on Google Play (https://play.google.com/store/apps/details?id=com.codyadams.astrofinish). Built natively with Kotlin and Jetpack Compose, delivering adaptive phone and tablet layouts with the same local-first privacy posture and linear FITS editing workflow.
 
 ---
 
@@ -35,10 +36,10 @@ AstroFinish works with both linear telescope FITS captures and already-stretched
 
 ---
 
-## Core Features (AstroFinish 2.1)
+## Core Features
 
 ### 1. FITS Develop & Pro Stack
-- Open linear FITS files straight from Files, Photos, or pasted HTTP/HTTPS download links (FITS or ZIP).
+- Open linear FITS files straight from Files, Photos/Gallery, or pasted HTTP/HTTPS download links (FITS or ZIP).
 - Import FITS sessions including light, dark, and flat frames.
 - **Develop Styles**: Natural (true-to-life color, white stars, highlight guard), Hubble (gold hydrogen / blue oxygen for dual-band nebulae), Auto Reveal, Siril-like plain stretch, Natural Color, and Linear inspection.
 - **Tighten Stars (Deconvolution)**: Measures the point-spread blur from the photo's own stars and pulls bloated star halos back into crisp cores on-device.
@@ -58,19 +59,19 @@ AstroFinish works with both linear telescope FITS captures and already-stretched
 
 ### 3. Batch Finish & Export
 - Queue multiple captures from an observing session, apply consistent looks, and export locally.
-- Exports save cleanly to the local `AstroFinish Exports` Photos album without ever altering original files.
+- Exports save cleanly to your local `AstroFinish Exports` album/folder without ever altering original files.
 
 ---
 
 ## How AstroFinish Compares to Alternatives
 
-| Capability | AstroFinish (iPhone & iPad) | General Photo Editors (Lightroom, Snapseed) | Desktop Astro Suites (PixInsight, Siril) |
+| Capability | AstroFinish (iOS & Android) | General Photo Editors (Lightroom, Snapseed) | Desktop Astro Suites (PixInsight, Siril) |
 | :--- | :--- | :--- | :--- |
-| **Opens Linear FITS Files** | Yes (native on iPhone & iPad) | No | Yes (desktop only) |
+| **Opens Linear FITS Files** | Yes (native on iPhone, iPad & Android) | No | Yes (desktop only) |
 | **Built for Smart Telescopes (Seestar / DWARF)** | Yes — one-tap FITS Develop & astro looks | General photography only | Powerful, steep manual setup |
 | **Star Deconvolution & Star Reduction** | Yes (Tighten Stars, Locate Stars, Protect Regions) | No | Yes (desktop plugins / scripts) |
 | **Narrowband Palettes (HOO / Hubble SHO)** | Yes — one-tap with white-star preservation | Manual color hacks only | Yes (complex pixel math / scripts) |
-| **Runs on iPhone & iPad** | Yes — native adaptive layouts | Yes | No (Windows/macOS/Linux desktop) |
+| **Runs on Phone & Tablet** | Yes — native iPhone, iPad & Android layouts | Yes | No (Windows/macOS/Linux desktop) |
 | **Learning Curve** | Beginner-friendly + built-in Explain Mode | Moderate (not astro-specific) | Steep |
 | **Account / Cloud / Tracking** | None — 100% local on-device | Often requires account / cloud | Local (desktop) |
 | **Price** | Free core app (existing features stay free) | Often $10+/mo subscription | Free (Siril) to $300+ (PixInsight + add-ons) |
@@ -79,20 +80,20 @@ AstroFinish works with both linear telescope FITS captures and already-stretched
 
 ## Frequently Asked Questions
 
-### What is the best astrophotography editing app for iPhone and iPad?
-AstroFinish is a dedicated, local-first astrophotography editor for iPhone and iPad built specifically for deep-sky photos and linear FITS files. Unlike general photo editors, it includes native FITS stretching, star-tightening deconvolution, subject-aware denoise, gradient removal, and one-tap HOO/Hubble SHO nebula palettes — all free to use with no account or cloud upload.
+### What is the best astrophotography editing app for iPhone, iPad, and Android?
+AstroFinish is a dedicated, local-first astrophotography editor for iPhone, iPad, and Android built specifically for deep-sky photos and linear FITS files. Unlike general photo editors, it includes native FITS stretching, star-tightening deconvolution, subject-aware denoise, gradient removal, and one-tap HOO/Hubble SHO nebula palettes — all free to use with no account or cloud upload.
 
-### Can I edit FITS files from a Seestar S50, Seestar S30, or DWARF 3 on iPhone or iPad?
-Yes. AstroFinish opens stacked FITS files and FITS sessions directly from Files, Photos, or download links on iPhone and iPad. It automatically stretches linear telescope data using Natural or Hubble develop styles, removes gradients and green casts, tightens stars, and hands the full-resolution image into the finishing editor.
+### Can I edit FITS files from a Seestar S50, Seestar S30, or DWARF 3 on iPhone, iPad, or Android?
+Yes. AstroFinish opens stacked FITS files and FITS sessions directly from Files, Photos/Gallery, or download links on iPhone, iPad, and Android. It automatically stretches linear telescope data using Natural or Hubble develop styles, removes gradients and green casts, tightens stars, and hands the full-resolution image into the finishing editor.
 
-### Does AstroFinish support iPad?
-Yes. AstroFinish 2.1 runs natively on iPad with adaptive layouts that use the entire screen in both landscape and portrait. In landscape, the controls sit beside a full-height photo canvas; in portrait, sliders arrange two across for comfortable touch editing.
+### Does AstroFinish support iPad and Android tablets?
+Yes. AstroFinish runs natively on iPad and Android tablets with adaptive layouts that use the entire screen in both landscape and portrait. In landscape, the controls sit beside a full-height photo canvas; in portrait, sliders arrange comfortably below the image for touch editing.
 
 ### Is AstroFinish available on Android?
-A native Android version of AstroFinish (built with Kotlin and Jetpack Compose for phones and tablets) is actively in development with the same local-first privacy posture and FITS editing workflow. Android users can request early access at https://astrofinish.com/feedback/?platform=android.
+Yes! AstroFinish for Android (phones and tablets) is live and free on Google Play: https://play.google.com/store/apps/details?id=com.codyadams.astrofinish. Built natively with Kotlin and Jetpack Compose, it brings the same local-first privacy posture, adaptive layouts, and linear FITS editing workflow to Android.
 
 ### Is AstroFinish free, or does it require a subscription?
-AstroFinish is free to download on the Apple App Store with no account or subscription required. Everything available in AstroFinish today is promised to remain free permanently; any future optional paid upgrades would apply only to brand-new features.
+AstroFinish is free to download on both the Apple App Store and Google Play with no account or subscription required. Everything available in AstroFinish today is promised to remain free permanently; any future optional paid upgrades would apply only to brand-new features.
 
 ### Does AstroFinish upload my astronomy photos to the cloud?
-No. All photo importing, linear FITS developing, star tightening, denoising, batch finishing, and exporting happen locally on your iPhone or iPad. AstroFinish contains no analytics SDKs, no ad trackers, and no cloud photo sync, and never overwrites your original files.
+No. All photo importing, linear FITS developing, star tightening, denoising, batch finishing, and exporting happen locally on your iPhone, iPad, or Android device. AstroFinish contains no analytics SDKs, no ad trackers, and no cloud photo sync, and never overwrites your original files.

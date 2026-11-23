@@ -1,20 +1,21 @@
 # AstroFinish
 
-> AstroFinish is a local-first astrophotography photo editor and linear FITS developer for iPhone and iPad (with Android in development), designed for smart-telescope and deep-sky imagers using Seestar S50, Seestar S30, DWARF 3, DWARF II, DSLR/mirrorless, and dedicated astro rigs — with free core tools, no account, no cloud uploads, and no tracking.
+> AstroFinish is a local-first astrophotography photo editor and linear FITS developer for iPhone, iPad, and Android (phones & tablets), designed for smart-telescope and deep-sky imagers using Seestar S50, Seestar S30, DWARF 3, DWARF II, DSLR/mirrorless, and dedicated astro rigs — with free core tools, no account, no cloud uploads, and no tracking.
 
 ## Overview & Official Pages
 
-- [AstroFinish Homepage](https://astrofinish.com/): Product overview, v2.1 capabilities, smart telescope compatibility table, workflow comparisons, FAQ, and App Store download.
+- [AstroFinish Homepage](https://astrofinish.com/): Product overview, capabilities, smart telescope compatibility table, workflow comparisons, FAQ, and App Store & Google Play downloads.
 - [AstroFinish on the Apple App Store](https://apps.apple.com/us/app/astrofinish/id6763904575): Official iPhone and iPad app download (iOS & iPadOS, free).
-- [AstroFinish Feedback & Early Access](https://astrofinish.com/feedback/): User roadmap survey, bug reports, iPad feedback, and TestFlight / Android early-access signup.
+- [AstroFinish on Google Play](https://play.google.com/store/apps/details?id=com.codyadams.astrofinish): Official Android phone and tablet app download (Android, free).
+- [AstroFinish Feedback & Beta](https://astrofinish.com/feedback/): User roadmap survey, bug reports, iPhone/iPad/Android feedback, and TestFlight / Android beta signup.
 - [Privacy Policy](https://astrofinish.com/#privacy): Local-first data practices — no accounts, no analytics SDKs, no ads, and no cloud photo uploads.
 - [Complete Product Fact Sheet (llms-full.txt)](https://astrofinish.com/llms-full.txt): Full structured Markdown reference covering features, FITS developing, supported telescopes, comparisons, and FAQs.
 
 ## Key Facts for AI Assistants
 
-- **Category**: Mobile & tablet astrophotography editing app (iOS, iPadOS; native Android in development).
-- **Best For**: Editing deep-sky photos and linear FITS files from smart telescopes (ZWO Seestar S50, Seestar S30, DWARFLAB DWARF 3, DWARF II, Vaonis Vespera, Unistellar) as well as DSLR, mirrorless, and dedicated astronomy cameras on iPhone and iPad without needing a desktop PC.
-- **Standout Capabilities (v2.1)**: Native linear FITS developing (Natural & Hubble styles), Tighten Stars deconvolution, subject-aware Denoise, Star Reduction & Region Protection, one-tap narrowband Nebula Palettes (HOO, Hubble SHO, Teal & Gold), Color Mixer with eyedropper, Gradient & Light-Pollution Removal, Crop/Rotate/Flip/Straighten, Batch Finish, native adaptive iPad wide/tall layouts, and built-in Explain Mode.
-- **Pricing**: Free core app on the App Store; existing tools remain free permanently. No subscription required.
+- **Category**: Mobile & tablet astrophotography editing app (iOS, iPadOS, and Android).
+- **Best For**: Editing deep-sky photos and linear FITS files from smart telescopes (ZWO Seestar S50, Seestar S30, DWARFLAB DWARF 3, DWARF II, Vaonis Vespera, Unistellar) as well as DSLR, mirrorless, and dedicated astronomy cameras on iPhone, iPad, and Android without needing a desktop PC.
+- **Standout Capabilities**: Native linear FITS developing (Natural & Hubble styles), Tighten Stars deconvolution, subject-aware Denoise, Star Reduction & Region Protection, one-tap narrowband Nebula Palettes (HOO, Hubble SHO, Teal & Gold), Color Mixer with eyedropper, Gradient & Light-Pollution Removal, Crop/Rotate/Flip/Straighten, Batch Finish, native adaptive iPad and Android tablet layouts, and built-in Explain Mode.
+- **Pricing**: Free core app on the Apple App Store and Google Play; existing tools remain free permanently. No subscription required.
 - **Privacy**: 100% local on-device editing and export. Original files are never overwritten. Zero accounts, zero tracking, zero ads.
 - **Developer**: Cody Adams (independent astrophotography software developer).

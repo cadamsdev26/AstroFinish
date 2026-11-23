@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#020408">
-  <title>AstroFinish Feedback & Early Access — iPhone, iPad & Android</title>
-  <meta name="description" content="Share quick feedback on AstroFinish for iPhone and iPad, request features, report bugs, or sign up for TestFlight and Android early access.">
+  <title>AstroFinish Feedback & Beta — iPhone, iPad & Android</title>
+  <meta name="description" content="Share quick feedback on AstroFinish for iPhone, iPad, and Android, request features, report bugs, or sign up for TestFlight and Android beta builds.">
   <link rel="canonical" href="https://astrofinish.com/feedback/">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://astrofinish.com/feedback/">
-  <meta property="og:title" content="AstroFinish Feedback & Early Access">
-  <meta property="og:description" content="Tell Cody what gear you shoot with, how AstroFinish works on your iPhone or iPad, and what to build next — including Android early access.">
+  <meta property="og:title" content="AstroFinish Feedback & Beta">
+  <meta property="og:description" content="Tell Cody what gear you shoot with, how AstroFinish works on your iPhone, iPad, or Android device, and what to build next.">
   <meta property="og:image" content="https://astrofinish.com/landing-assets/app-icon.png">
   <style>
     :root {
@@ -581,7 +581,7 @@
     <section class="hero">
       <span class="eyebrow">AstroFinish Feedback</span>
       <h1>Got 45 seconds? Help shape what's <span style="color:var(--ice)">next.</span></h1>
-      <p>AstroFinish now runs natively on iPhone and iPad, and Android is on the way. Tap the quick options that fit you — no essay required — so I spend time building what actually helps your night-sky edits.</p>
+      <p>AstroFinish runs natively on iPhone, iPad, and Android. Tap the quick options that fit you — no essay required — so I spend time building what actually helps your night-sky edits.</p>
       <div class="meta-row">
         <span class="meta-pill ice">Only 3 quick taps required</span>
         <span class="meta-pill">iPhone · iPad · Android</span>
@@ -627,8 +627,8 @@
         </div>
 
         <!-- Contextual: Android notice -->
-        <div class="conditional amber" id="androidFollowup">
-          <p><strong>Android is actively in development.</strong> Pick your gear and top features below — and if you'd like an invite when Android early access opens, leave your email at the bottom (I've pre-checked Android early access for you).</p>
+        <div class="conditional" id="androidFollowup">
+          <p><strong>AstroFinish for Android is live!</strong> If you haven't grabbed it yet, it's free on <a href="https://play.google.com/store/apps/details?id=com.codyadams.astrofinish" target="_blank" rel="noopener noreferrer" style="color:var(--ice);text-decoration:underline;text-underline-offset:3px">Google Play</a>. Let me know your device model or any early 1.0 bugs or polish ideas below.</p>
         </div>
       </section>
 
@@ -644,7 +644,7 @@
           <label class="chip"><input type="radio" name="pulse" value="Good"><span class="chip-dot"></span><span>Good</span></label>
           <label class="chip"><input type="radio" name="pulse" value="It's okay"><span class="chip-dot"></span><span>It's okay</span></label>
           <label class="chip"><input type="radio" name="pulse" value="Needs work"><span class="chip-dot"></span><span>Needs work</span></label>
-          <label class="chip"><input type="radio" name="pulse" value="Haven't used it yet / waiting on Android"><span class="chip-dot"></span><span>Haven't tried yet / waiting on Android</span></label>
+          <label class="chip"><input type="radio" name="pulse" value="Haven't tried it yet"><span class="chip-dot"></span><span>Haven't tried it yet</span></label>
         </div>
         <div class="error" id="pulseError">Tap one option above so I know how it's going.</div>
       </section>
@@ -745,14 +745,14 @@
         </div>
         <p class="hint">Optional — tap up to three.</p>
         <div class="feature-grid" id="featureOptions">
-          <label class="option"><input type="checkbox" name="feature" value="Android app (phone & tablet)"><span><strong>Android app</strong><small>Native phone &amp; tablet version with the same local workflow</small></span></label>
+          <label class="option"><input type="checkbox" name="feature" value="Curves & live histogram"><span><strong>Curves &amp; live histogram</strong><small>Fine tone-curve adjustments with a real-time RGB histogram</small></span></label>
           <label class="option"><input type="checkbox" name="feature" value="Better gradient / light-pollution removal"><span><strong>Stronger gradient removal</strong><small>Handle tough Moon glow and uneven city skies</small></span></label>
           <label class="option"><input type="checkbox" name="feature" value="Multi-frame FITS stacking & calibration"><span><strong>More FITS stacking tools</strong><small>Faster session stacking, alignment, and rejection</small></span></label>
           <label class="option"><input type="checkbox" name="feature" value="Masking / selective edits"><span><strong>Selective masking</strong><small>Brush or target edits only on the nebula, galaxy, or sky</small></span></label>
           <label class="option"><input type="checkbox" name="feature" value="Smart Finish (AI look & checkup)"><span><strong>Smart Finish &amp; image checkup</strong><small>Optional AI look suggestion + spotting clipping/noise</small></span></label>
           <label class="option"><input type="checkbox" name="feature" value="RAW / DNG & 16-bit TIFF export"><span><strong>16-bit TIFF / RAW &amp; DNG</strong><small>Higher-bit-depth import and export options</small></span></label>
           <label class="option"><input type="checkbox" name="feature" value="Telescope-specific profiles (Seestar / DWARF)"><span><strong>Telescope profiles</strong><small>Tuned starting points for Seestar S50/S30 &amp; DWARF 3</small></span></label>
-          <label class="option"><input type="checkbox" name="feature" value="More iPad Pro tools"><span><strong>More iPad tools</strong><small>Apple Pencil masking, keyboard shortcuts, Split View polish</small></span></label>
+          <label class="option"><input type="checkbox" name="feature" value="More iPad & tablet tools"><span><strong>More iPad &amp; tablet tools</strong><small>Stylus/Pencil masking, keyboard shortcuts, Split View polish</small></span></label>
           <label class="option"><input type="checkbox" name="feature" value="Plate solving / annotation cards"><span><strong>Plate solving &amp; sky cards</strong><small>Label constellations/objects on shareable export cards</small></span></label>
           <label class="option"><input type="checkbox" name="feature" value="Mac / desktop app"><span><strong>Mac / desktop app</strong><small>Bring the same fast darkroom to macOS</small></span></label>
         </div>
@@ -816,21 +816,21 @@
         </div>
       </section>
 
-      <!-- 7. Anything Else & Early Access -->
+      <!-- 7. Anything Else & Beta Builds -->
       <section class="card">
         <div class="card-head">
-          <h2>7. Anything else — or want early access?</h2>
+          <h2>7. Anything else — or want beta builds?</h2>
           <span class="tag">Optional</span>
         </div>
         <label class="sub-label" for="anythingInput">Bugs, ideas, favorite control, or anything on your mind</label>
         <textarea id="anythingInput" name="anything" placeholder="A bug you hit, a control that surprised you, a telescope format you need — whatever comes to mind."></textarea>
 
         <div class="sub-block">
-          <label class="sub-label" for="betaEmailInput">Want TestFlight (iPhone / iPad) or Android early access? <span>(no marketing emails, ever)</span></label>
+          <label class="sub-label" for="betaEmailInput">Want early beta builds? <span>(no marketing emails, ever)</span></label>
           <input id="betaEmailInput" type="email" name="betaEmail" autocomplete="email" placeholder="you@example.com">
           <div class="chips" style="margin-top:10px" id="betaPlatformChips">
             <label class="chip"><input type="checkbox" name="betaPlatform" value="iPhone / iPad TestFlight"><span class="chip-dot"></span><span>iPhone / iPad TestFlight</span></label>
-            <label class="chip"><input type="checkbox" name="betaPlatform" value="Android Early Access"><span class="chip-dot"></span><span>Android Early Access</span></label>
+            <label class="chip"><input type="checkbox" name="betaPlatform" value="Android Beta (Google Play)"><span class="chip-dot"></span><span>Android Beta (Google Play)</span></label>
           </div>
         </div>
       </section>
@@ -845,7 +845,7 @@
       <p class="privacy-note">
         Submitting sends only the answers you chose here (plus your app version/platform link tags if opened from the app) through
         <a href="https://formsubmit.co/" target="_blank" rel="noopener">FormSubmit</a> so Cody can read them.
-        This form never uploads your photos and sets no tracking cookies. If you leave an email, it is used only for beta or Android early-access follow-up.
+        This form never uploads your photos and sets no tracking cookies. If you leave an email, it is used only for beta follow-up.
       </p>
     </form>
   </main>
@@ -880,8 +880,6 @@
 
     const paymentRadios = [...document.querySelectorAll('input[name="payment"]')];
     const pricingDetails = document.getElementById('pricingDetails');
-
-    const betaPlatformBoxes = [...document.querySelectorAll('input[name="betaPlatform"]')];
 
     const params = new URLSearchParams(location.search);
 
@@ -928,19 +926,9 @@
       ipadFollowup.classList.toggle('open', hasIPad);
       androidFollowup.classList.toggle('open', hasAndroid);
 
-      if (hasAndroid) {
-        const androidBeta = betaPlatformBoxes.find(b => b.value === 'Android Early Access');
-        if (androidBeta && !androidBeta.dataset.userTouched) {
-          androidBeta.checked = true;
-        }
-      }
       if (selected.length) deviceError.classList.remove('show');
       updateProgress();
     }
-
-    betaPlatformBoxes.forEach(box => box.addEventListener('change', () => {
-      box.dataset.userTouched = '1';
-    }));
 
     deviceBoxes.forEach(box => box.addEventListener('change', syncDeviceConditionals));
 
@@ -1082,8 +1070,8 @@
         'Cloud AI comfort': showPricing ? (formValue('cloudComfort') || 'Not answered') : 'Skipped',
         'Smart Finish price': showPricing ? (formValue('aiPrice') || 'Not answered') : 'Skipped',
         'Additional comments': formValue('anything') || 'None',
-        'Beta / Early access email': formValue('betaEmail') || 'Not provided',
-        'Early access platforms': formValue('betaEmail') ? (betaPlatforms.length ? betaPlatforms.join(', ') : 'Not specified') : 'N/A',
+        'Beta email': formValue('betaEmail') || 'Not provided',
+        'Beta platforms': formValue('betaEmail') ? (betaPlatforms.length ? betaPlatforms.join(', ') : 'Not specified') : 'N/A',
         _honey: formValue('_honey')
       };
 
@@ -1107,7 +1095,6 @@
         featureCounter.textContent = '0 / 3 selected';
         pricingDetails.classList.remove('open');
         otherGearBox.classList.remove('open');
-        betaPlatformBoxes.forEach(b => delete b.dataset.userTouched);
         applyInitialDevice();
         updateProgress();
         submitStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
